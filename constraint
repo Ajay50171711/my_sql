@@ -1,0 +1,14 @@
+
+CREATE TABLE Employees (
+    emp_id INT PRIMARY KEY,                   -- PRIMARY KEY: Ensures unique employee IDs
+    emp_name VARCHAR(100) NOT NULL,           -- NOT NULL: Employee name cannot be NULL
+    age INT CHECK (age >= 18),                -- CHECK: Restricts age to 18 or above
+    email VARCHAR(100) UNIQUE,                -- UNIQUE: Ensures no duplicate email addresses
+    hire_date DATE DEFAULT CURRENT_DATE       -- DEFAULT: Automatically sets hire_date if not provided
+);
+
+INSERT INTO Employees (emp_id, emp_name, age, email)
+VALUES (101, 'Alice', 28, 'alice@example.com'),
+       (102, 'Bob', 35, 'bob@example.com');
+
+select * from Employees
