@@ -1,0 +1,42 @@
+Introduction to MySQL
+MySQL is one of the most popular Relational Database Management Systems (RDBMS) used for storing, managing, and retrieving data efficiently. It's open-source and widely used in web applications, data analysis, and various other domains.
+
+What is a Database?
+A database is an organized collection of data that can be easily accessed, managed, and updated. In MySQL, databases are used to store data in tables.
+
+Key Features of MySQL
+Relational Database: Data is organized in tables with rows and columns.
+SQL Support: Uses Structured Query Language (SQL) to interact with the database.
+Open-Source: Free to use and has a large community.
+Cross-Platform: Runs on various operating systems like Windows, Linux, and macOS.
+Scalability: Supports both small applications and large-scale data systems.
+Security: Provides strong data protection mechanisms.
+Integration: Works well with programming languages like PHP, Java, Python, and more.
+
+Basic Concepts
+Database:
+A container for storing data.
+Can have multiple tables.
+Table:
+Represents data in rows and columns.
+Each table has a unique name.
+Row:
+A single record in the table.
+Example: Information about one person in an "Employees" table.
+Column:
+A field that holds specific information about all records.
+Example: "Name" or "Age" in an "Employees" table.
+Primary Key:
+A unique identifier for each row in a table.
+Foreign Key:
+A column in one table that links to the primary key of another table.
+
+
+Create a database:
+CREATE DATABASE my_database;
+
+Show all databases:
+SHOW DATABASES;
+
+Use a database:
+USE my_database;
