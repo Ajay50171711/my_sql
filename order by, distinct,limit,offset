@@ -1,0 +1,57 @@
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(50),
+    Category VARCHAR(50),
+    Price DECIMAL(10, 2),
+    Quantity INT
+);
+
+INSERT INTO Products (ProductID, ProductName, Category, Price, Quantity) VALUES
+(1, 'Laptop', 'Electronics', 1200.00, 10),
+(2, 'Smartphone', 'Electronics', 800.00, 20),
+(3, 'Tablet', 'Electronics', 400.00, 15),
+(4, 'Headphones', 'Accessories', 100.00, 50),
+(5, 'Keyboard', 'Accessories', 50.00, 30),
+(6, 'Mouse', 'Accessories', 25.00, 40),
+(7, 'Chair', 'Furniture', 150.00, 10),
+(8, 'Desk', 'Furniture', 300.00, 5),
+(9, 'Monitor', 'Electronics', 200.00, 25),
+(10, 'Smartwatch', 'Electronics', 250.00, 10);
+
+
+1. ORDER BY
+Used to sort the results in ascending (ASC) or descending (DESC) order based on one or more columns.
+
+Example: List all products sorted by price in descending order.
+SELECT * 
+FROM Products
+ORDER BY Price DESC;
+
+
+2. DISTINCT
+Used to return unique values from a column, eliminating duplicates.
+
+Example: Get a list of unique product categories.
+SELECT DISTINCT Category
+FROM Products;
+
+
+3. LIMIT
+Used to restrict the number of rows returned.
+
+Example: Get the top 5 most expensive products.
+SELECT * 
+FROM Products
+ORDER BY Price DESC
+LIMIT 5;
+
+
+4. OFFSET
+Used to skip a specific number of rows before starting to return rows. Often used with LIMIT.
+
+Example: Get the 6th to 10th most expensive products.
+SELECT * 
+FROM Products
+ORDER BY Price DESC
+LIMIT 5 OFFSET 5;
+
