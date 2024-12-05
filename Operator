@@ -1,0 +1,92 @@
+
+
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Age INT,
+    Department VARCHAR(50),
+    Salary DECIMAL(10, 2)
+);
+
+INSERT INTO Employees (EmployeeID, FirstName, LastName, Age, Department, Salary) VALUES
+(1, 'John', 'Doe', 28, 'Sales', 55000.00),
+(2, 'Jane', 'Smith', 35, 'HR', 60000.00),
+(3, 'Alice', 'Johnson', 45, 'IT', 75000.00),
+(4, 'Bob', 'Brown', 30, 'Marketing', 50000.00),
+(5, 'Charlie', 'Davis', 40, 'Finance', 85000.00),
+(6, 'Eve', 'White', 25, 'Sales', 45000.00),
+(7, 'Frank', 'Black', 50, 'IT', 70000.00),
+(8, 'Grace', 'Green', 29, 'HR', 62000.00);
+
+
+AND
+Combines two conditions and returns records where both conditions are true.
+
+Find employees who are in the "Sales" department and earn more than $50,000.
+SELECT * 
+FROM Employees
+WHERE Department = 'Sales' AND Salary > 50000;
+
+
+OR
+Combines two conditions and returns records where at least one condition is true.
+
+Example: Find employees who are younger than 30 or work in the "HR" department.
+SELECT * 
+FROM Employees
+WHERE Age < 30 OR Department = 'HR';
+
+
+NOT
+Reverses the condition, returning records where the condition is not true.
+
+Example: Find employees who are not in the "IT" department.
+SELECT * 
+FROM Employees
+WHERE NOT Department = 'IT';
+
+
+4. IN
+Used to specify multiple possible values for a column. It is similar to using multiple OR conditions.
+
+Example: Find employees in the "Finance" or "Marketing" departments.
+SELECT * 
+FROM Employees
+WHERE Department IN ('Finance', 'Marketing');
+
+
+5. NOT IN
+Returns records where the column value is not in the specified list.
+
+Example: Find employees who are not in the "Sales" or "HR" departments.
+SELECT * 
+FROM Employees
+WHERE Department NOT IN ('Sales', 'HR');
+
+
+6. BETWEEN
+Used to filter records within a specified range, including the boundaries.
+
+Example: Find employees whose salary is between $40,000 and $60,000.
+SELECT * 
+FROM Employees
+WHERE Salary BETWEEN 40000 AND 60000;
+
+
+7. LIKE
+Used for pattern matching with wildcards:
+%: Matches zero or more characters.
+_: Matches exactly one character
+.
+Example: Find employees whose first name starts with "J".
+SELECT * 
+FROM Employees
+WHERE FirstName LIKE 'J%';
+
+
+
+
+
+
+
