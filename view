@@ -1,1 +1,7 @@
+CREATE VIEW view_name AS
 
+SELECT * FROM view_name;
+
+DROP VIEW view_name;
+
+DROP VIEW IF EXISTS sales_employees;
