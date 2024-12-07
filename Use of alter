@@ -1,1 +1,74 @@
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    BirthDate DATE
+);
+
+Add column
+-----------------
+ALTER TABLE Students
+ADD Email VARCHAR(100);
+
+Modify column
+--------------------
+ALTER TABLE Students
+MODIFY COLUMN FirstName VARCHAR(100);
+
+change column name
+----------------------------
+ALTER TABLE Students
+CHANGE COLUMN FirstName GivenName VARCHAR(50);
+
+
+
+Rename table
+----------------------
+ALTER TABLE Students RENAME TO StudentRecords;
+
+
+change column sequence
+--------------------------
+ALTER TABLE Students MODIFY COLUMN BirthDate DATE AFTER LastName;
+
+remove primary key
+----------------------
+ALTER TABLE Students DROP PRIMARY KEY;
+
+Add primary key
+---------------------
+ALTER TABLE Students ADD PRIMARY KEY (StudentID);
+
+add foreign key constraint
+------------------------------------
+ALTER TABLE Students ADD CONSTRAINT fk_course FOREIGN KEY (CourseID) REFERENCES Courses (CourseID);
+
+drop primary key
+-------------------------
+ALTER TABLE Students
+DROP FOREIGN KEY fk_course;
+
+
+Add A Unique Constraint
+-----------------------------
+ALTER TABLE Students ADD CONSTRAINT unique_email UNIQUE (Email);
+
+
+Drop a UNIQUE Constraint
+------------------------------
+ALTER TABLE Students
+DROP INDEX unique_email;
+
+
+Drop a Column
+------------------
+ALTER TABLE Students
+DROP COLUMN Email;
+
+
+
+
+
+
+
 
