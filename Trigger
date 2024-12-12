@@ -1,1 +1,86 @@
 
+use ajay
+
+create table employee(
+emp_id int,
+emp_name varchar(50),
+emp_salary int)
+
+insert into employee
+values
+(1,"ajay",35000),
+(2,"vijay",20000),
+(3,"rahul",12000);
+
+create table recycle(
+emp_name varchar(50),
+emp_salary int,
+deleteat timestamp default current_timestamp)
+
+
+delimiter //
+create trigger deleted_employee
+after delete
+on employee
+for each row
+begin
+insert into recycle(emp_name,emp_salary)
+values
+(old.emp_name,old.emp_salary);
+end //
+delimiter ;
+
+set sql_safe_updates = 0
+
+delete from employee
+where emp_id = 1
+
+select * from recycle
+
+
+
+
+trigger after update
+-------------------------
+
+
+use ajay
+
+create table employee(
+emp_id int,
+emp_name varchar(50),
+emp_salary int)
+
+insert into employee
+values
+(1,"ajay",35000),
+(2,"vijay",20000),
+(3,"rahul",12000);
+
+create table update_salary(
+emp_name varchar(50),
+emp_salary int,
+emp_new_salary int,
+deleteat timestamp default current_timestamp)
+
+
+delimiter //
+create trigger new_salary
+after update
+on employee
+for each row
+begin
+insert into updated_salary(emp_name,emp_salary,emp_new_salary)
+values
+(old.emp_name,old.emp_salary,new.emp_salary);
+end //
+delimiter ;
+
+set sql_safe_updates =0;
+
+update employee
+set emp_salary = 1200000
+where emp_id = 1
+
+select *from update_salary
+
