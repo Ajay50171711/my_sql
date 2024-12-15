@@ -8,8 +8,7 @@ Reusable: Once created, you can execute it multiple times.
 Can take parameters: You can pass values to the stored procedure to make it dynamic.
 Can perform multiple operations: It can run multiple SQL statements (e.g., SELECT, INSERT, UPDATE, DELETE).
 Syntax for Creating a Stored Procedure:
-sql
-Copy code
+
 DELIMITER $$
 
 CREATE PROCEDURE procedure_name (parameters)
@@ -26,8 +25,6 @@ Example Scenario:
 Let’s say we have a table employees and we want to create a stored procedure to insert a new employee into the table.
 
 Step 1: Create the employees Table
-sql
-Copy code
 CREATE TABLE employees (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
@@ -63,28 +60,28 @@ DELIMITER $$: This is used to change the delimiter temporarily, as stored proced
 Step 3: Call the Stored Procedure
 Once the stored procedure is created, you can call it to insert a new employee into the employees table. For example:
 
-sql
-Copy code
 CALL insert_employee('Alice Johnson', 'Software Developer', 75000);
 What Happens?
 When you run CALL insert_employee('Alice Johnson', 'Software Developer', 75000);, the procedure will execute the INSERT INTO employees statement.
 It will insert the following data into the employees table:
 id	name	position	salary
 1	Alice Johnson	Software Developer	75000.00
+
 Step 4: Check the Table
 To check if the new employee has been inserted, you can run a SELECT query:
 
-sql
-Copy code
 SELECT * FROM employees;
+
 Example Output:
 id	name	position	salary
 1	Alice Johnson	Software Developer	75000.00
+
 Advantages of Using Stored Procedures:
 Simplified Reuse: You don't need to repeat the same SQL code each time you want to insert a new employee. You just call the procedure.
 Better Structure: The logic is encapsulated in a single procedure, which makes your code more organized.
 Security: You can restrict direct access to the table and allow only certain users to execute stored procedures.
 Performance: Stored procedures can improve performance because they are precompiled and stored in the database.
+
 Summary:
 A Stored Procedure in MySQL is like a reusable function that you define once and can call whenever you need it. In our example, we created a stored procedure insert_employee that inserts a new employee into the employees table. You call it with the required parameters (name, position, salary), and it runs the INSERT operation.
 
@@ -92,13 +89,6 @@ Stored procedures are useful for automating common tasks, simplifying your code,
 
 Let me know if you need more examples or further clarification!
 
-
-
-You said:
-give some more example to understand store procedure
-ChatGPT said:
-ChatGPT
-Absolutely! Let's go through a few more examples to give you a better understanding of how stored procedures work in MySQL.
 
 Example 1: Stored Procedure to Update an Employee's Salary
 In this example, we will create a stored procedure that updates the salary of an employee based on their id.
@@ -115,8 +105,6 @@ CREATE TABLE employees (
 Step 2: Create the Stored Procedure to Update Salary
 This stored procedure will take two parameters: employee_id (the ID of the employee) and new_salary (the new salary value).
 
-sql
-Copy code
 DELIMITER $$
 
 CREATE PROCEDURE update_salary (
@@ -130,6 +118,7 @@ BEGIN
 END $$
 
 DELIMITER ;
+
 Explanation:
 CREATE PROCEDURE update_salary: We define a procedure named update_salary.
 Parameters:
@@ -139,24 +128,20 @@ SQL Logic: The procedure executes an UPDATE statement to set the salary to the n
 Step 3: Call the Stored Procedure
 Let’s say we want to update the salary of the employee with id = 1 to 80000. We call the stored procedure like this:
 
-sql
-Copy code
 CALL update_salary(1, 80000);
 Step 4: Check the Table
 To verify that the salary has been updated, you can run a SELECT query:
 
-sql
-Copy code
 SELECT * FROM employees WHERE id = 1;
 Example Output (after the update):
 id	name	position	salary
 1	Alice Johnson	Software Developer	80000.00
+
 Example 2: Stored Procedure to Delete an Employee by ID
 In this example, we will create a stored procedure to delete an employee from the employees table based on their id.
 
 Step 1: Create the Stored Procedure to Delete Employee
-sql
-Copy code
+
 DELIMITER $$
 
 CREATE PROCEDURE delete_employee (
@@ -176,14 +161,12 @@ SQL Logic: The procedure executes a DELETE statement that removes the employee f
 Step 2: Call the Stored Procedure
 To delete the employee with id = 1, we would call the procedure like this:
 
-sql
-Copy code
+
 CALL delete_employee(1);
 Step 3: Check the Table
 To confirm that the employee was deleted, you can run the following query:
 
-sql
-Copy code
+
 SELECT * FROM employees;
 Example Output (after the delete):
 id	name	position	salary
@@ -192,8 +175,7 @@ Example 3: Stored Procedure to Get Employee Details
 This example demonstrates how to create a stored procedure that retrieves an employee's details (name, position, and salary) based on the employee's id.
 
 Step 1: Create the Stored Procedure to Get Employee Details
-sql
-Copy code
+
 DELIMITER $$
 
 CREATE PROCEDURE get_employee_details (
@@ -214,91 +196,19 @@ SQL Logic: The procedure executes a SELECT statement to fetch the name, position
 Step 2: Call the Stored Procedure
 To retrieve the details of the employee with id = 2, we call the procedure like this:
 
-sql
-Copy code
+
 CALL get_employee_details(2);
 Step 3: Check the Result
 The result will be something like this:
 
 name	position	salary
 John Doe	Software Engineer	65000
-Example 4: Stored Procedure with Multiple Operations
-Let's create a stored procedure that inserts a new employee into the employees table and logs the action into an audit_log table.
 
-Step 1: Create the audit_log Table
-sql
-Copy code
-CREATE TABLE audit_log (
-    log_id INT AUTO_INCREMENT PRIMARY KEY,
-    action VARCHAR(100),
-    table_name VARCHAR(100),
-    record_id INT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-Step 2: Create the Stored Procedure with Multiple Operations
-Now, let’s create a stored procedure that does the following:
-
-Insert a new employee.
-Log the insertion in the audit_log table.
-sql
-Copy code
-DELIMITER $$
-
-CREATE PROCEDURE insert_employee_with_log (
-    IN employee_name VARCHAR(100),
-    IN employee_position VARCHAR(50),
-    IN employee_salary DECIMAL(10, 2)
-)
-BEGIN
-    -- Insert the new employee
-    INSERT INTO employees (name, position, salary)
-    VALUES (employee_name, employee_position, employee_salary);
-
-    -- Get the last inserted employee ID
-    SET @last_id = LAST_INSERT_ID();
-
-    -- Log the action into audit_log
-    INSERT INTO audit_log (action, table_name, record_id)
-    VALUES ('INSERT', 'employees', @last_id);
-END $$
-
-DELIMITER ;
-Explanation:
-CREATE PROCEDURE insert_employee_with_log: We define a procedure to insert a new employee and log the action.
-Multiple SQL Statements: The procedure performs two operations:
-Insert into employees: Inserts the new employee.
-Log into audit_log: Logs the action, using LAST_INSERT_ID() to get the ID of the newly inserted employee and store it in the audit log.
-Step 3: Call the Stored Procedure
-Now, we can call this stored procedure to insert an employee and log the action:
-
-sql
-Copy code
-CALL insert_employee_with_log('Eva Green', 'Product Manager', 85000);
-Step 4: Check Both Tables
-To verify the employees table:
-sql
-Copy code
-SELECT * FROM employees;
-To verify the audit_log table:
-sql
-Copy code
-SELECT * FROM audit_log;
-Example Output (After Insertion):
-employees table:
-
-id	name	position	salary
-1	Eva Green	Product Manager	85000
-audit_log table:
-
-log_id	action	table_name	record_id	created_at
-1	INSERT	employees	1	2024-12-12 14:00:00
-Summary:
-Here are the examples we've covered:
 
 Updating an Employee's Salary: A stored procedure to update the salary of an employee.
 Deleting an Employee: A stored procedure to delete an employee based on id.
 Retrieving Employee Details: A stored procedure that fetches employee details by id.
-Multiple Operations: A stored procedure that inserts a new employee and logs the action in an audit_log.
+
 Benefits of Using Stored Procedures:
 
 Reusability: Once created, stored procedures can be called multiple times.
