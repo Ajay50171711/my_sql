@@ -1,1 +1,99 @@
+CREATE TABLE students (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    age INT,
+    grade CHAR(1),
+    marks INT,
+    city VARCHAR(50)
+);
+
+  INSERT INTO students (id, name, age, grade, marks, city) VALUES
+(1, 'Alice', 14, 'A', 90, 'New York'),
+(2, 'Bob', 15, 'B', 75, 'Los Angeles'),
+(3, 'Charlie', 14, 'C', 60, 'Chicago'),
+(4, 'Diana', 15, 'A', 85, 'New York'),
+(5, 'Eve', 14, 'B', 70, 'Houston'),
+(6, 'Frank', 16, 'C', 55, 'Chicago'),
+(7, 'Grace', 15, 'A', 95, 'Los Angeles');
+
+
+Question: Add 10 bonus marks to each student's marks.
+Solution:
+SELECT id, name, marks, marks + 10 AS total_marks_with_bonus 
+FROM students;
+
+
+Question: Calculate the percentage (out of 100) for each student.
+Solution:
+SELECT id, name, marks, (marks / 100) * 100 AS percentage 
+FROM students;
+
+
+Question: Find students who are older than 14 and have marks greater than 70.
+Solution:
+SELECT * 
+FROM students 
+WHERE age > 14 AND marks > 70;
+
+
+Question: List students who either live in New York or have grade A.
+Solution:
+SELECT * 
+FROM students 
+WHERE city = 'New York' OR grade = 'A';
+
+
+Question: Find students who do not have grade B.
+Solution:
+SELECT * 
+FROM students 
+WHERE NOT grade = 'B';
+
+
+Question: Combine each student's name with their city into a single string.
+Solution:
+SELECT CONCAT(name, ', ', city) AS name_with_city 
+FROM students;
+
+
+Question: Find students whose names start with A.
+Solution:
+SELECT * 
+FROM students 
+WHERE name LIKE 'A%';
+
+
+
+Question: List students from New York, Chicago, or Los Angeles.
+Solution:
+SELECT * 
+FROM students 
+WHERE city IN ('New York', 'Chicago', 'Los Angeles');
+
+
+Question: List students who do not belong to Houston or Los Angeles.
+Solution:
+SELECT * 
+FROM students 
+WHERE city NOT IN ('Houston', 'Los Angeles');
+
+
+Question: Find students whose marks are between 60 and 90.
+Solution:
+SELECT * 
+FROM students 
+WHERE marks BETWEEN 60 AND 90;
+
+
+Question: Find students who have the same grade as students from Chicago.
+Solution:
+SELECT * 
+FROM students 
+WHERE grade IN (
+    SELECT grade 
+    FROM students 
+    WHERE city = 'Chicago'
+);
+
+
 
