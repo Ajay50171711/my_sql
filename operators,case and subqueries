@@ -96,4 +96,136 @@ WHERE grade IN (
 );
 
 
+12)Question:
+Write a query to categorize students as Pass or Fail based on their marks (passing marks: 60).
+Solution:
+SELECT id, name, marks,
+       CASE 
+           WHEN marks >= 60 THEN 'Pass'
+           ELSE 'Fail'
+       END AS result
+FROM students;
+
+
+13)Question:
+Create a query to assign a scholarship amount based on the grade:
+A: 1000
+B: 500
+C: 200
+Solution:
+SELECT id, name, grade,
+       CASE 
+           WHEN grade = 'A' THEN 1000
+           WHEN grade = 'B' THEN 500
+           WHEN grade = 'C' THEN 200
+           ELSE 0
+       END AS scholarship_amount
+FROM students;
+
+
+14)Question:
+Label students as Teen if their age is between 13 and 19, otherwise adult.
+Solution:
+SELECT id, name, age,
+       CASE 
+           WHEN age BETWEEN 13 AND 19 THEN 'Teen'
+           ELSE 'adult'
+       END AS age_group
+FROM students;
+
+15)Question
+Fetch the details of the student with the highest marks.
+Solution:
+SELECT * 
+FROM students
+WHERE marks = (SELECT MAX(marks) FROM students);
+
+
+16)Question:
+List the students whose marks are above the average marks.
+Solution:
+SELECT *
+FROM students
+WHERE marks > (SELECT AVG(marks) FROM students);
+
+
+17)Question:
+Find students who live in cities with more than one student.
+Solution:
+SELECT * 
+FROM students
+WHERE city IN (
+    SELECT city
+    FROM students
+    GROUP BY city
+    HAVING COUNT(*) > 1
+);
+
+
+18)Question:
+Fetch the details of the student with the second-highest marks.
+Solution:
+SELECT *
+FROM students
+WHERE marks = (
+    SELECT MAX(marks) 
+    FROM students
+    WHERE marks < (SELECT MAX(marks) FROM students)
+);
+
+
+
+19)Question:
+List all cities where students with grade A reside.
+Solution:
+SELECT DISTINCT city
+FROM students
+WHERE grade = 'A';
+
+
+20)Question:
+Find all students who live in the same city as the top scorer.
+Solution:
+SELECT *
+FROM students
+WHERE city = (
+    SELECT city 
+    FROM students
+    WHERE marks = (SELECT MAX(marks) FROM students)
+);
+
+
+21)Question:
+Fetch all students who are not in grade C.
+Solution:
+SELECT * 
+FROM students
+WHERE grade <> 'C';
+
+
+22)Question:
+List all cities where no student has a grade of A.
+Solution:
+SELECT DISTINCT city 
+FROM students
+WHERE city NOT IN (
+    SELECT DISTINCT city 
+    FROM students
+    WHERE grade = 'A'
+);
+
+
+23)Question:
+Find students who live in cities where the average marks are below 70.
+Solution:
+SELECT *
+FROM students
+WHERE city IN (
+    SELECT city
+    FROM students
+    GROUP BY city
+    HAVING AVG(marks) < 70
+);
+
+
 
