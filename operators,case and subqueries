@@ -17,46 +17,46 @@ CREATE TABLE students (
 (7, 'Grace', 15, 'A', 95, 'Los Angeles');
 
 
-Question: Add 10 bonus marks to each student's marks.
+1)Question: Add 10 bonus marks to each student's marks.
 Solution:
 SELECT id, name, marks, marks + 10 AS total_marks_with_bonus 
 FROM students;
 
 
-Question: Calculate the percentage (out of 100) for each student.
+2)Question: Calculate the percentage (out of 100) for each student.
 Solution:
 SELECT id, name, marks, (marks / 100) * 100 AS percentage 
 FROM students;
 
 
-Question: Find students who are older than 14 and have marks greater than 70.
+3)Question: Find students who are older than 14 and have marks greater than 70.
 Solution:
 SELECT * 
 FROM students 
 WHERE age > 14 AND marks > 70;
 
 
-Question: List students who either live in New York or have grade A.
+4)Question: List students who either live in New York or have grade A.
 Solution:
 SELECT * 
 FROM students 
 WHERE city = 'New York' OR grade = 'A';
 
 
-Question: Find students who do not have grade B.
+5)Question: Find students who do not have grade B.
 Solution:
 SELECT * 
 FROM students 
 WHERE NOT grade = 'B';
 
 
-Question: Combine each student's name with their city into a single string.
+6)Question: Combine each student's name with their city into a single string.
 Solution:
 SELECT CONCAT(name, ', ', city) AS name_with_city 
 FROM students;
 
 
-Question: Find students whose names start with A.
+7)Question: Find students whose names start with A.
 Solution:
 SELECT * 
 FROM students 
@@ -64,28 +64,28 @@ WHERE name LIKE 'A%';
 
 
 
-Question: List students from New York, Chicago, or Los Angeles.
+8)Question: List students from New York, Chicago, or Los Angeles.
 Solution:
 SELECT * 
 FROM students 
 WHERE city IN ('New York', 'Chicago', 'Los Angeles');
 
 
-Question: List students who do not belong to Houston or Los Angeles.
+9)Question: List students who do not belong to Houston or Los Angeles.
 Solution:
 SELECT * 
 FROM students 
 WHERE city NOT IN ('Houston', 'Los Angeles');
 
 
-Question: Find students whose marks are between 60 and 90.
+10)Question: Find students whose marks are between 60 and 90.
 Solution:
 SELECT * 
 FROM students 
 WHERE marks BETWEEN 60 AND 90;
 
 
-Question: Find students who have the same grade as students from Chicago.
+11)Question: Find students who have the same grade as students from Chicago.
 Solution:
 SELECT * 
 FROM students 
