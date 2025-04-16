@@ -17,3 +17,14 @@ LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
 
 select * from sample_data
+========================================================================================
+Export Using MySQL Workbench
+If you’re using MySQL Workbench:
+
+Right-click the table (sample_data) > Table Data Export Wizard
+
+Choose the format (CSV)
+
+Pick the output location
+
+Click Next > Export!
