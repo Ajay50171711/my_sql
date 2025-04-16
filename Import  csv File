@@ -1,0 +1,19 @@
+CREATE TABLE sample_data (
+    id INT,
+    name VARCHAR(50),
+    age INT,
+    email VARCHAR(100)
+);
+
+
+
+
+
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/sample_data.csv'
+INTO TABLE sample_data
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
+
+select * from sample_data
