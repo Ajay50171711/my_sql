@@ -1,30 +1,38 @@
-CREATE TABLE sample_data (
-    id INT,
-    name VARCHAR(50),
-    age INT,
-    email VARCHAR(100)
-);
+How to Export and Import Data Using MySQL Workbench
+
+
+Export Data from MySQL Workbench to Excel (CSV)
+---------------------------------------------------
+Run your query to get the result grid with the data you want to export.
+
+In the result grid panel, click on the Export button (usually an icon with a disk or export symbol).
+
+Choose the file format (e.g., CSV or Excel) and select the destination folder where you want to save the exported file.
+
+Click Save or Export.
+
+After the export finishes, open the exported file in Excel or your preferred spreadsheet application.
 
 
 
+Import Data from CSV into MySQL Workbench
+-----------------------------------------------------
+In the Navigator panel on the left, expand your database/schema.
 
+Right-click on the Tables section or anywhere inside your database schema.
 
-LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/sample_data.csv'
-INTO TABLE sample_data
-FIELDS TERMINATED BY ',' 
-ENCLOSED BY '"'
-LINES TERMINATED BY '\r\n'
-IGNORE 1 ROWS;
+Select Table Data Import Wizard from the context menu.
 
-select * from sample_data
-========================================================================================
-Export Using MySQL Workbench
-If you’re using MySQL Workbench:
+In the wizard, browse and select your CSV file to import.
 
-Right-click the table (sample_data) > Table Data Export Wizard
+Choose to either:
 
-Choose the format (CSV)
+Import data into an existing table, or
 
-Pick the output location
+Create a new table (MySQL Workbench will automatically generate a table based on your CSV’s columns).
 
-Click Next > Export!
+Review and adjust the table name and column data types if needed.
+
+Proceed with the import by clicking Next and then Finish.
+
+Once complete, your data will be imported into the selected table.
