@@ -1,0 +1,14 @@
+| order_id | customer_name | city        | order_amount | order_month |
+| -------- | ------------- | ----------- | ------------ | ----------- |
+| 1        | John          | New York    | 1200         | Jan         |
+| 2        | Emma          | Los Angeles | 800          | Jan         |
+| 3        | John          | New York    | 1500         | Feb         |
+| 4        | Olivia        | Chicago     | 2000         | Feb         |
+| 5        | Emma          | Los Angeles | 1700         | Mar         |
+| 6        | Olivia        | Chicago     | 1000         | Mar         |
+| 7        | John          | New York    | 1300         | Mar         |
+
+
+❓ Question:
+
+Find the total order amount per city and show only the cities where average order amount is greater than 1200.
