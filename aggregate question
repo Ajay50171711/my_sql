@@ -10,5 +10,18 @@
 
 
 ❓ Question:
-
 Find the total order amount per city and show only the cities where average order amount is greater than 1200.
+
+================================================================================================================================
+
+| emp_id | emp_name | department | salary | city    |
+| ------ | -------- | ---------- | ------ | ------- |
+| 1      | Arjun    | HR         | 45000  | Delhi   |
+| 2      | Meera    | IT         | 60000  | Mumbai  |
+| 3      | Rohan    | IT         | 65000  | Mumbai  |
+| 4      | Neha     | Finance    | 55000  | Delhi   |
+| 5      | Kabir    | HR         | 48000  | Chennai |
+| 6      | Ananya   | Finance    | 52000  | Delhi   |
+
+❓ Question:
+Find the employees whose salary is greater than the average salary of all employees.
