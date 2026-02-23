@@ -1,0 +1,86 @@
+✅ 1️⃣ Create Employee Table
+CREATE TABLE employee (
+    emp_id INT PRIMARY KEY,
+    emp_name VARCHAR(50),
+    join_date DATE,
+    login_time DATETIME
+);
+
+
+
+
+
+✅ 2️⃣ Insert Sample Data
+INSERT INTO employee VALUES
+(1, 'Amit', '2023-01-10', '2026-02-20 09:15:00'),
+(2, 'Neha', '2022-06-15', '2026-02-20 10:00:00'),
+(3, 'Rahul', '2024-03-01', '2026-02-20 08:45:00);
+
+
+
+
+🔹 Real Examples Using Date Functions
+=====================================================
+
+1️⃣ Calculate Working Days of Employee
+SELECT emp_name,
+       join_date,
+       DATEDIFF(CURDATE(), join_date) AS total_working_days
+FROM employee;
+
+
+
+👉 Shows how many days employee worked till today.
+
+2️⃣ Extract Year, Month, Day from Join Date
+SELECT emp_name,
+       YEAR(join_date) AS join_year,
+       MONTH(join_date) AS join_month,
+       DAY(join_date) AS join_day
+FROM employee;
+
+
+
+3️⃣ Add 1 Year to Join Date (Promotion Date)
+SELECT emp_name,
+       join_date,
+       DATE_ADD(join_date, INTERVAL 1 YEAR) AS promotion_date
+FROM employee;
+
+
+
+
+4️⃣ Employees Joined in 2023
+SELECT *
+FROM employee
+WHERE YEAR(join_date) = 2023;
+
+
+
+5️⃣ Extract Only Date from Login Time
+SELECT emp_name,
+       DATE(login_time) AS login_date
+FROM employee;
+
+
+
+6️⃣ Extract Only Time from Login Time
+SELECT emp_name,
+       TIME(login_time) AS login_hour
+FROM employee;
+
+
+
+7️⃣ Format Date in Custom Format
+SELECT emp_name,
+       DATE_FORMAT(join_date, '%d-%m-%Y') AS formatted_date
+FROM employee;
+
+
+
+✅ Practical Use in Real Company
+======================================================
+Attendance calculation
+Salary calculation (based on working days)
+Finding employee experience
+Tracking login/logout time
