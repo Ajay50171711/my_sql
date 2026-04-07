@@ -1,42 +1,38 @@
-Introduction to MySQL
-MySQL is one of the most popular Relational Database Management Systems (RDBMS) used for storing, managing, and retrieving data efficiently. It's open-source and widely used in web applications, data analysis, and various other domains.
+create database Pride
 
-What is a Database?
-A database is an organized collection of data that can be easily accessed, managed, and updated. In MySQL, databases are used to store data in tables.
+drop database pride //if exist 
 
-Key Features of MySQL
-Relational Database: Data is organized in tables with rows and columns.
-SQL Support: Uses Structured Query Language (SQL) to interact with the database.
-Open-Source: Free to use and has a large community.
-Cross-Platform: Runs on various operating systems like Windows, Linux, and macOS.
-Scalability: Supports both small applications and large-scale data systems.
-Security: Provides strong data protection mechanisms.
-Integration: Works well with programming languages like PHP, Java, Python, and more.
+use pride
 
-Basic Concepts
-Database:
-A container for storing data.
-Can have multiple tables.
-Table:
-Represents data in rows and columns.
-Each table has a unique name.
-Row:
-A single record in the table.
-Example: Information about one person in an "Employees" table.
-Column:
-A field that holds specific information about all records.
-Example: "Name" or "Age" in an "Employees" table.
-Primary Key:
-A unique identifier for each row in a table.
-Foreign Key:
-A column in one table that links to the primary key of another table.
+create table student(
+roll_no int,
+name varchar(50),
+marks int,
+result varchar(10))
 
 
-Create a database:
-CREATE DATABASE my_database;
+select * from student
 
-Show all databases:
-SHOW DATABASES;
+insert into student
+values
+(1,"Ram",78,"Fail"),
+(2,"Ramesh",94,"Pass"),
+(3,"Raj",34,"Fail"),
+(4,"Rajat",90,"PAss")
 
-Use a database:
-USE my_database;
+select * from student
+
+update student
+set result = "Pass"
+where  roll_no = 1
+
+set sql_safe_updates = 0
+
+delete from student
+where result = "Fail"
+
+truncate student
+
+drop table student
+
+drop database pride
